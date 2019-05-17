@@ -23,13 +23,15 @@ class App extends React.Component {
       });
   }
   handleClick(event) {
+    console.log(event.currentTarget.value);
+    const inputValue = event.currentTarget.value;
     const inputGender= event.currentTarget.checked;
     if (inputGender){
       this.setState(prevState => {
         return {
           filters:{
             ...prevState.filters,
-            genres: prevState.filters.genres.concat('female')
+            genres: prevState.filters.genres.concat(inputValue)
           }
         }    
       });
@@ -38,7 +40,7 @@ class App extends React.Component {
         return {
           filters:{
             ...prevState.filters,
-            genres: prevState.filters.genres.filter(item=> item !== 'female')
+            genres: prevState.filters.genres.filter(item=> item !== inputValue)
           }
         }    
       });
@@ -57,7 +59,7 @@ class App extends React.Component {
           onClick={this.handleClick}
         />
         <label htmlFor="female">Female</label>
-        <input type="checkbox" name="gender" id="male" value="male" />
+        <input type="checkbox" name="gender" id="male" value="male" onClick={this.handleClick}/>
         <label htmlFor="male">Male</label>
         <CardList people={people} />
       </div>
