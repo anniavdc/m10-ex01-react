@@ -2,7 +2,6 @@ import React from "react";
 
 class CardList extends React.Component {
   render() {
-    const { people } = this.props;
     const { genderFilter } = this.props;
     return (
       <ul className="card__list">
